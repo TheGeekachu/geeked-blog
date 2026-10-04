@@ -1,15 +1,23 @@
-import Link from "next/link"
+"use client";
+
+import Link from "next/link";
+import { usePathname } from "next/navigation";
 
 function Nav() {
-    return (
-        <nav>
-            <Link href="/">Home</Link>
-            <Link href="/blogs">Blogs</Link>
-            <Link href="/post">Post</Link>
-            <Link href="/about">About</Link>
-            <Link href="/signin">Sign In</Link>
-        </nav>
-    );
+  const pathname = usePathname();
+
+  return (
+    <nav>
+      <Link href="/" className="logo">thegeekachu</Link>
+      
+      <div className="nav-links">
+        <Link href="/" className={pathname === "/" ? "active-pill" : ""}>Home</Link>
+        <Link href="/blogs" className={pathname.startsWith("/blogs") ? "active-pill" : ""}>Blogs</Link>
+        <Link href="/post" className={pathname === "/post" ? "active-pill" : ""}>Post</Link>
+        <Link href="/signin" className={pathname === "/signin" ? "active-pill" : ""}>Sign In</Link>
+      </div>
+    </nav>
+  );
 }
 
 export default Nav;

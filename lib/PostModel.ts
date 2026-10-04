@@ -5,6 +5,7 @@ const PostSchema = new Schema(
     id: {
       type: String,
       required: true,
+      unique: true,
     },
     date: {
       type: Date,
@@ -18,8 +19,13 @@ const PostSchema = new Schema(
       type: [String],
       required: true,
     },
+    author: {
+      type: String,
+      required: true,
+      default: "Anonymous",
+    },
   },
-  { timestamps: true },
+  { timestamps: true }
 );
 
 const Post = models.Post || model("Post", PostSchema);
