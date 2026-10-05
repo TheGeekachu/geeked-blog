@@ -21,7 +21,11 @@ export async function initAuth() {
     plugins: [dash({
       apiKey: process.env.BETTER_AUTH_API_KEY,
     })],
-    secret: process.env.BETTER_AUTH_SECRET || process.env.BETTER_AUTH_API_KEY
+    secret: process.env.BETTER_AUTH_SECRET || process.env.BETTER_AUTH_API_KEY,
+    advanced: {
+      disableCSRFCheck: true,
+      disableOriginCheck: true,
+    },
   });
 
   return instance;
