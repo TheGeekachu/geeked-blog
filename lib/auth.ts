@@ -1,5 +1,6 @@
 import { betterAuth } from "better-auth";
 import { mongodbAdapter } from "better-auth/adapters/mongodb";
+import { dash } from "@better-auth/infra";
 import dbConnect from "./mongoose";
 
 export async function initAuth() {
@@ -13,6 +14,7 @@ export async function initAuth() {
     emailAndPassword: { enabled: true },
     baseURL: baseUrl,
     trustedOrigins: baseUrl ? [baseUrl] : [],
+    plugins: [dash()],
   });
 
   return instance;
