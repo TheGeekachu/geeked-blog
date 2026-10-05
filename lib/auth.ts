@@ -15,6 +15,7 @@ export async function initAuth() {
     baseURL: baseUrl,
     trustedOrigins: baseUrl ? [baseUrl] : [],
     plugins: [dash()],
+    secret: process.env.BETTER_AUTH_SECRET || process.env.BETTER_AUTH_API_KEY
   });
 
   return instance;
