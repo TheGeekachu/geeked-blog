@@ -13,8 +13,14 @@ export async function initAuth() {
     database: mongodbAdapter(client.db()),
     emailAndPassword: { enabled: true },
     baseURL: baseUrl,
-    trustedOrigins: baseUrl ? [baseUrl] : [],
-    plugins: [dash()],
+    trustedOrigins: [
+      "https://geeked-blog.vercel.app",
+      "https://dash.better-auth.com",
+      "https://*.better-auth.com",
+    ],
+    plugins: [dash({
+      apiKey: process.env.BETTER_AUTH_API_KEY,
+    })],
     secret: process.env.BETTER_AUTH_SECRET || process.env.BETTER_AUTH_API_KEY
   });
 
