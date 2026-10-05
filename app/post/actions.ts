@@ -2,6 +2,7 @@
 
 import Post from "@/lib/PostModel";
 import dbConnect from "@/lib/mongoose";
+import { revalidatePath } from "next/cache";
 import { initAuth } from "@/lib/auth";
 import { headers } from "next/headers";
 
@@ -13,7 +14,7 @@ export interface PostType {
   author?: string;
 }
 
-export async function postBlog(post: PostType) {
+export async function postBlog(postPayload: PostType) {
   const auth = await initAuth();
   const session = await auth.api.getSession({ headers: await headers() });
 
@@ -24,13 +25,17 @@ export async function postBlog(post: PostType) {
   try {
     await dbConnect();
     const postData = {
-      ...post,
+      ...postPayload,
       author: session.user.name || session.user.email || "Anonymous",
     };
 
     const newPost = await Post.create(postData);
     console.log("Successfully created post:", newPost);
-    return { success: true };
+    revalidatePath("/");
+    revalidatePath("/blogs");
+    revalidatePath(`/blogs/${postPayload.id}`);
+
+    return { success: true, post: JSON.parse(JSON.stringify(newPost)) };
   } catch (error: any) {
     console.error("Database Error:", error);
     throw new Error(

@@ -3,6 +3,8 @@ import Post from "@/lib/PostModel";
 import dbConnect from "@/lib/mongoose";
 import Link from "next/link";
 
+export const dynamic = "force-dynamic";
+
 async function Page() {
   await dbConnect();
   const allPosts = (await Post.find().sort({ date: -1 })) as PostType[];
