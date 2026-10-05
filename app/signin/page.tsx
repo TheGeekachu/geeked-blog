@@ -124,7 +124,7 @@ export default function Page() {
                 Name
                 <input
                   type="text"
-                  placeholder="Your Name"
+                  placeholder="Your Username (Preferably not your real name)"
                   value={user.name}
                   onChange={(e) => setUser({ ...user, name: e.target.value })}
                   required
