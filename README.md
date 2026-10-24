@@ -23,4 +23,20 @@ npm run dev
 From there, you can use the Hack Club tutorial or your own expertise as needed to change styles, UI, and fix some bugs I was too lazy to.
 Have a good time, and keep following the creature trail! (Wild Kratts reference.)
 
+## Problems with this project:
+
+* Lots of Auth issues, which are now (mostly) sorted.
+* Translating my CSS for my personal site to this one.
+* Figuring out the differences between React and React Native, which is what I normally work with.
+* MongoDB issues, but I'll definitely use it again, unlike Supabase it doesn't take my project down for inactivity.
+* Overall, some quality of life stuff, like Hack CLub OAuth and sign-in with Google not yet added.
+
+## What to do if you like the project or have issues with it:
+
+* Leave me some stars on GitHub :D
+* If you're a Hack Clubber, like my Stardance: [TheGeekachu on Stardance](https://stardance.hackclub.com/@TheGeekachu)
+* Add a pull request with the suggested changes
+* Add a pull request with the change you want me to make in the README
+* Make a blog post about what changes you want me to make! :D
+
 # geeked-blog
